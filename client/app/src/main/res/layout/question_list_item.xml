@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:paddingRight="16dp"
+        tools:text="Question text? - 210 Votes" />
+
+    <ProgressBar
+        android:id="@+id/questionPercentBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="100"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:progress="50"
+        android:progressTint="@color/green" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="4dp">
+
+        <ImageButton
+            android:id="@+id/voteYesButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/vote_option_yes_description"
+            android:hapticFeedbackEnabled="true"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:soundEffectsEnabled="true"
+            app:srcCompat="@drawable/ic_like_24" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/vote_option_yes"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/yesPercentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            tools:text="16%" />
+
+        <TextView
+            android:id="@+id/noPercentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:textSize="16sp"
+            tools:text="16%" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/vote_option_no"
+            android:textAlignment="textEnd"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/voteNoButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/vote_option_no_description"
+            android:hapticFeedbackEnabled="true"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:soundEffectsEnabled="true"
+            app:srcCompat="@drawable/ic_dislike_24" />
+    </LinearLayout>
+
+</LinearLayout>

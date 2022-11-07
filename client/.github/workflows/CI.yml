@@ -1,0 +1,60 @@
+# Workflow name
+name: Test
+on:
+# When it will be triggered
+# And in which branch
+  pull_request:
+  push:
+    branches:
+      - dev
+      
+# Where will they run
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.3
+      
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        
+        
+    - name: Gradle Wrapper Validation
+      uses: gradle/wrapper-validation-action@v1
+      
+    - name: Add Google Maps key to local.properties
+      run: echo 'MAPS_API_KEY=${{ secrets.MAPS_KEY }}' >> local.properties
+      
+    - name: Create ImageShack token
+      run: echo '${{ secrets.IMAGESHACK_KEY }}' > app/src/main/java/com/econnect/API/ImageUpload/ApiKey.java
+    - name: Create Translate token
+      run: echo '${{ secrets.TRANSLATE_KEY }}' > app/src/main/java/com/econnect/API/Translate/ApiKey.java
+    - name: Create ElektroGo token
+      run: echo '${{ secrets.ELEKTROGO_KEY }}' > app/src/main/java/com/econnect/API/ElektroGo/ApiKey.java
+
+    - name: Prepare R.txt
+      uses: eskatos/gradle-command-action@v1.3.3
+      with:
+        gradle-version: current
+        wrapper-cache-enabled: true
+        dependencies-cache-enabled: true
+        configuration-cache-enabled: true
+        arguments: processDebugResources
+    - run: mkdir -p app/src/main/resources/values
+    - run: cp app/build/intermediates/runtime_symbol_list/debug/R.txt app/src/main/resources/R.txt
+    - run: cp app/src/main/res/values/strings.xml app/src/main/resources/values/R.txt
+       
+    - name: Run Unit Tests
+      id: runTests
+      uses: eskatos/gradle-command-action@v1.3.3
+      with:
+        gradle-version: current
+        wrapper-cache-enabled: true
+        dependencies-cache-enabled: true
+        configuration-cache-enabled: true
+        # Run ./gradlew test
+        arguments: test --info

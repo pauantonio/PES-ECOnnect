@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/products"
+        android:icon="@drawable/ic_products_24"
+        android:title="@string/products_name" />
+    <item
+        android:id="@+id/companies"
+        android:icon="@drawable/ic_companies_24"
+        android:title="@string/companies_name" />
+    <item
+        android:id="@+id/forum"
+        android:icon="@drawable/ic_forum_24"
+        android:title="@string/forum_name" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile_24"
+        android:title="@string/profile_name" />
+</menu>

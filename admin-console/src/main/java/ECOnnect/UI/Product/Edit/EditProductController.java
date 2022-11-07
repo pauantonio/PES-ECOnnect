@@ -1,0 +1,58 @@
+package ECOnnect.UI.Product.Edit;
+
+import ECOnnect.UI.Interfaces.Controller;
+import ECOnnect.UI.Interfaces.View;
+import ECOnnect.UI.Product.ProductModel;
+import ECOnnect.API.ProductService.Product;
+import ECOnnect.UI.ScreenManager;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class EditProductController extends Controller implements IEditProductController {
+    private final EditProductView _view = new EditProductView(this);
+    private final ProductModel _model = new ProductModel();
+    
+    private String _type;
+    private int _productId;
+
+    public View getView() {
+        return _view;
+    }
+
+    public ActionListener saveButton() {
+        return (ActionEvent e) -> {
+            String name = _view.getNameText();
+            String manufacturer = _view.getManufacturerText();
+            String imageUrl = _view.getImageUrlText();
+
+            try{
+                _model.updateProduct(_productId, name, manufacturer, imageUrl, _type);
+            }
+            catch (Exception ex) {
+                _view.displayError("Could not edit product:\n" + ex.getMessage());
+                return;
+            }
+            
+            ScreenManager.getInstance().show(ScreenManager.PRODUCT_SCREEN);
+        };
+    }
+
+    public ActionListener cancelButton() {
+        return (ActionEvent e) -> {
+            ScreenManager.getInstance().show(ScreenManager.PRODUCT_SCREEN);
+        };
+    }
+    
+    @Override
+    public void postInit(Object[] args) {
+        if (args.length != 1) {
+            throw new IllegalArgumentException("Expected 1 argument: product:Product");
+        }
+        Product product = (Product) args[0];
+        _type = product.type;
+        _productId = product.id;
+        _view.setTitle("Edit product '" + product.name + "'");
+        _view.setFields(product.name, product.manufacturer, product.imageurl);
+    }
+}

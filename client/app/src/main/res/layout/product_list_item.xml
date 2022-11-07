@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/product_item_image"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:contentDescription="@string/product_image_description"
+        app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+        app:srcCompat="@drawable/ic_products_24"
+        tools:ignore="ImageContrastCheck" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/product_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Product name" />
+
+        <TextView
+            android:id="@+id/product_item_manufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Manufacturer name" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/star_image_description"
+        app:srcCompat="@drawable/ic_star_24" />
+
+    <TextView
+        android:id="@+id/product_item_rating"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="1.23" />
+
+
+</LinearLayout>

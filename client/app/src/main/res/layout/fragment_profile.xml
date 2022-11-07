@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Profile.ProfileFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
+
+            <TextView
+                android:id="@+id/usernameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="22sp"
+                tools:text="Username" />
+
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="16sp"
+                tools:text="Email" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginStart="16dp"
+                    app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                    app:srcCompat="@drawable/ic_profile_24"
+                    tools:ignore="ImageContrastCheck" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/active_medal"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/medal_active_image"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+                        app:srcCompat="@drawable/ic_medal_24"
+                        tools:ignore="ImageContrastCheck" />
+
+                    <TextView
+                        android:id="@+id/idMedalText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        tools:text="medal name" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/about_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/aboutField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                tools:ignore="TextContrastCheck"
+                tools:text="This is an about section" />
+
+            <Button
+                android:id="@+id/reportButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="64dp"
+                android:text="@string/report_user"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/medals_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+
+            <com.econnect.Utilities.NonScrollingListView
+                android:id="@+id/medalsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/lockedMedalsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/not_unlocked_yet"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:ignore="TextContrastCheck"
+                tools:visibility="visible" />
+
+            <com.econnect.Utilities.NonScrollingListView
+                android:id="@+id/lockedMedalsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+            </com.econnect.Utilities.NonScrollingListView>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profile_menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#4CAF50"
+        android:clickable="true"
+        android:contentDescription="@string/edit_profile"
+        android:focusable="true"
+        android:onClick="showProfileMenu"
+        app:tint="@color/mtrl_btn_text_color_selector"
+        android:src="@drawable/ic_apps_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ImageContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

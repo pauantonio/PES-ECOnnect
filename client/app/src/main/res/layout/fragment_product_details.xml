@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemDetails.ProductDetailsFragment">
+
+    <TextView
+        android:id="@+id/questionsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:text="@string/questions_text"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/productNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Product Name" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/productImage"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productNameText"
+        app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.MediumComponent"
+        app:srcCompat="@drawable/ic_products_24"
+        tools:ignore="ImageContrastCheck" />
+
+    <ListView
+        android:id="@+id/questionsList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionsText" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/productImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toEndOf="@+id/productImage"
+        app:layout_constraintTop_toBottomOf="@+id/productNameText"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/star1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_24"
+                tools:layout_editor_absoluteX="296dp"
+                tools:layout_editor_absoluteY="215dp" />
+
+            <ImageView
+                android:id="@+id/star2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_star_24"
+                tools:layout_editor_absoluteX="296dp"
+                tools:layout_editor_absoluteY="215dp" />
+
+            <ImageView
+                android:id="@+id/star3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_star_24"
+                tools:layout_editor_absoluteX="296dp"
+                tools:layout_editor_absoluteY="215dp" />
+
+            <ImageView
+                android:id="@+id/star4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_star_24"
+                tools:layout_editor_absoluteX="296dp"
+                tools:layout_editor_absoluteY="215dp" />
+
+            <ImageView
+                android:id="@+id/star5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_star_24"
+                tools:layout_editor_absoluteX="296dp"
+                tools:layout_editor_absoluteY="215dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/numberOfRatingsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            tools:text="123 ratings" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/addRatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_rating_button_text"
+                tools:ignore="TextContrastCheck" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/viewMapButtonDetails"
+                style="button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_map_24"
+                android:visibility="gone"
+                app:tint="@color/mtrl_btn_text_color_selector"
+                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

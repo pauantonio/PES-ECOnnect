@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Profile.SetHomeFragment">
+
+    <ProgressBar
+        android:id="@+id/home_progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/enter_postal_code"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="390dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/postalCodeNumBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:minHeight="48dp"
+                app:endIconDrawable="@drawable/ic_clear_24"
+                app:endIconMode="clear_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/postal_code_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/zipcode"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/find_building"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="390dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/street_name_box"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:enabled="false"
+                    android:hint="@string/street"
+                    app:endIconDrawable="@drawable/ic_clear_24"
+                    app:endIconMode="clear_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:startIconDrawable="@drawable/ic_search_24">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/street_name_dropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:completionThreshold="1"
+                        android:dropDownWidth="match_parent"
+                        android:singleLine="true"
+                        tools:ignore="TextContrastCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/street_num_box"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:autofillHints=""
+                    android:enabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/street_num_text"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/street_number"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/check_home_button"
+                android:layout_width="200dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/find_homes"
+                app:icon="@drawable/ic_search_24"
+                tools:ignore="TextContrastCheck"
+                tools:layout_editor_absoluteY="465dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profile_delete_account"
+        android:icon="@drawable/ic_delete_24"
+        android:title="@string/menu_delete_account" />
+    <item
+        android:id="@+id/profile_translate"
+        android:icon="@drawable/ic_translate_24"
+        android:title="@string/translate" />
+    <item
+        android:id="@+id/profile_logout"
+        android:icon="@drawable/ic_logout_24"
+        android:title="@string/menu_log_out" />
+    <item
+        android:id="@+id/profile_edit"
+        android:icon="@drawable/ic_edit_profile_24"
+        android:title="@string/menu_edit_profile" />
+
+
+</menu>

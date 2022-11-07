@@ -1,0 +1,39 @@
+# Workflow name
+name: Run tests
+
+on:
+# When it will be triggered
+# And in which branch
+  pull_request:
+  push:
+    branches:
+      - dev
+
+# Where will they run
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.3
+      
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        
+    - name: Create ImageShack token
+      run: echo '${{ secrets.IMAGESHACK_KEY }}' > src/main/java/ECOnnect/API/ImageUpload/ApiKey.java
+        
+    # This may improve run times
+    - uses: actions/cache@v1
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+      
+    - run: chmod +x mvnw
+    - name: Run Unit Tests
+      run: ./mvnw test

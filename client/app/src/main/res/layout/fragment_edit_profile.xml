@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Profile.EditFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/account"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editUsernameBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="65dp"
+                    android:autofillHints=""
+                    android:minHeight="48dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editUsernameText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/username_textbox_hint"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/changeNameButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:enabled="false"
+                    android:focusable="true"
+                    android:src="@drawable/ic_save_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editEmailBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="65dp"
+                    android:autofillHints=""
+                    android:minHeight="48dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editEmailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email_textbox_hint"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/changeEmailButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:baselineAlignBottom="false"
+                    android:clickable="true"
+                    android:enabled="false"
+                    android:focusable="true"
+                    android:src="@drawable/ic_save_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editAboutBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="250dp"
+                    android:layout_height="65dp"
+                    android:minHeight="48dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editAboutText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/about_text"
+                        android:inputType="text"
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/changeAboutButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:baselineAlignBottom="false"
+                    android:clickable="true"
+                    android:enabled="false"
+                    android:focusable="true"
+                    android:src="@drawable/ic_save_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/set_home_button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/set_home"
+                app:icon="@drawable/ic_home_24"
+                tools:ignore="TextContrastCheck" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchPrivate"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:minHeight="48dp"
+                android:text="@string/private_account_toggle" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16sp"
+                android:layout_marginTop="32sp"
+                android:layout_marginRight="16sp"
+                android:text="@string/profile_picture"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/editUserImage"
+                android:layout_width="256dp"
+                android:layout_height="172dp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginRight="16sp"
+                android:src="@drawable/ic_profile_24" />
+
+            <Button
+                android:id="@+id/deleteImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:enabled="false"
+                android:focusable="true"
+                android:text="@string/remove_image"
+                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/change_password"
+                android:textSize="20sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/oldPasswordBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="250dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="16dp"
+                android:autofillHints=""
+                android:minHeight="48dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/oldPasswordText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/old_password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newPasswordBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="250dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints=""
+                android:minHeight="48dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/newPasswordText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/change_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="@string/change_password"
+                    tools:ignore="TextContrastCheck,DuplicateSpeakableTextCheck" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

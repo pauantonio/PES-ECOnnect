@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/activeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/change_active_medal_text"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/yesChangeActiveMedal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vote_option_yes"
+            tools:ignore="TextContrastCheck" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/noChangeActiveMedal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vote_option_no"
+            tools:ignore="TextContrastCheck" />
+    </LinearLayout>
+
+</LinearLayout>

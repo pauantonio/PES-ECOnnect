@@ -1,0 +1,134 @@
+# Workflow name
+name: Build
+on:
+# When it will be triggered
+# And in which branch
+  pull_request:
+  push:
+    branches:
+      - master
+      
+# Where will they run
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.3
+      
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        
+        
+    - name: Gradle Wrapper Validation
+      uses: gradle/wrapper-validation-action@v1
+      
+    - name: Add Google Maps key to local.properties
+      run: echo 'MAPS_API_KEY=${{ secrets.MAPS_KEY }}' >> local.properties
+      
+    - name: Create ImageShack token
+      run: echo '${{ secrets.IMAGESHACK_KEY }}' > app/src/main/java/com/econnect/API/ImageUpload/ApiKey.java
+    - name: Create Translate token
+      run: echo '${{ secrets.TRANSLATE_KEY }}' > app/src/main/java/com/econnect/API/Translate/ApiKey.java
+    - name: Create ElektroGo token
+      run: echo '${{ secrets.ELEKTROGO_KEY }}' > app/src/main/java/com/econnect/API/ElektroGo/ApiKey.java
+        
+        
+    # This may improve performance
+    - uses: actions/cache@v2
+      with:
+        path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+            ${{ runner.os }}-gradle-
+    
+    ## Build artifact ##
+    - name: Prepare R.txt
+      uses: eskatos/gradle-command-action@v1.3.3
+      with:
+        gradle-version: current
+        wrapper-cache-enabled: true
+        dependencies-cache-enabled: true
+        configuration-cache-enabled: true
+        arguments: processDebugResources
+    - run: mkdir -p app/src/main/resources/values
+    - run: cp app/build/intermediates/runtime_symbol_list/debug/R.txt app/src/main/resources/R.txt
+    - run: cp app/src/main/res/values/strings.xml app/src/main/resources/values/R.txt
+        
+    - name: Build all artifacts
+      id: buildAllApks
+      uses: eskatos/gradle-command-action@v1.3.3
+      with:
+        gradle-version: current
+        wrapper-cache-enabled: true
+        dependencies-cache-enabled: true
+        configuration-cache-enabled: true
+        # Run ./gradlew with targets: test, assembleRelease, bundleRelease
+        # This runs unit tests and builds the app
+        arguments: test assembleRelease bundleRelease
+      
+    ## Sign artifact ##
+    - name: Sign APK
+      id: signArtifact
+      uses: r0adkll/sign-android-release@v1
+      with:
+        releaseDirectory: app/build/outputs/apk/release
+        alias: ${{ secrets.KEYALIAS }}
+        signingKeyBase64: ${{ secrets.KEYSTORE }}
+        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+    - name: Rename signed APK
+      id: renameArtifact
+      run: cp ${{steps.signArtifact.outputs.signedReleaseFile}} ECOnnect.apk
+      
+    - name: Sign Bundle
+      id: signBundle
+      uses: r0adkll/sign-android-release@v1
+      with:
+        releaseDirectory: app/build/outputs/bundle/release
+        alias: ${{ secrets.KEYALIAS }}
+        signingKeyBase64: ${{ secrets.KEYSTORE }}
+        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+    - name: Rename signed Bundle
+      id: renameBundle
+      run: cp ${{steps.signBundle.outputs.signedReleaseFile}} ECOnnect.aab
+
+    - name: Upload signed APK to GitHub
+      uses: actions/upload-artifact@v2.2.0
+      with:
+        name: Release APK
+        path: ECOnnect.apk
+        
+    - name: Upload signed Bundle to GitHub
+      uses: actions/upload-artifact@v2.2.0
+      with:
+        name: Release Bundle
+        path: ECOnnect.aab
+
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Latest Build"
+        files: |
+          ECOnnect.apk
+    
+    - name: Create service_account.json
+      run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > service_account.json
+    - name: Upload Android Release to Play Store
+      id: uploadToPlayStore
+      uses: r0adkll/upload-google-play@v1
+      with:
+        serviceAccountJson: service_account.json
+        packageName: com.econnect.client
+        releaseFiles: ECOnnect.aab
+        track: production
+        status: completed
+        whatsNewDirectory: playstore_notes/

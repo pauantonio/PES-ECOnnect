@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/LoginFragment">
+
+    <fragment
+        android:id="@+id/RegisterFragment"
+        android:name="com.econnect.client.RegisterLogin.RegisterFragment"
+        android:label="@string/register_fragment_label"
+        tools:layout="@layout/fragment_register">
+
+        <action
+            android:id="@+id/action_navigate_to_login"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_successful_register"
+            app:destination="@id/mainActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.econnect.client.RegisterLogin.LoginFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_successful_login"
+            app:destination="@id/mainActivity" />
+        <action
+            android:id="@+id/action_navigate_to_register"
+            app:destination="@id/RegisterFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.econnect.client.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.econnect.client.Profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_successful_logout"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/macaco"
+            app:destination="@id/RegisterFragment" />
+        <action
+            android:id="@+id/action_successful_edit_profile"
+            app:destination="@id/editprofileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editprofileFragment"
+        android:name="com.econnect.client.Profile.EditFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+    </fragment>
+
+</navigation>
